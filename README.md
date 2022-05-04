@@ -1,3 +1,3 @@
-# LambdaExamples
+# LambdaExamplesWithJAVA
 
-Lambda examples with zero to hero Tasks..
+JAVA Lambda examples with "zero to hero" Tasks..
