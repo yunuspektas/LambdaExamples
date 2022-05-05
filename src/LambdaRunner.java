@@ -1,10 +1,9 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class LambdaRunner {
     public static void main(String[] args) {
-        List<Integer> sayi = new ArrayList<>(Arrays.asList(34, 22, 16, 11, 35, 20, 63, 21, 65, 44, 66, 64, 81, 38, 15));
+        //List<Integer> sayi = new ArrayList<>(Arrays.asList(34, 22, 16, 11, 35, 20, 63, 21, 65, 44, 66, 64, 81, 38, 15));
+        List<Integer> sayi = new ArrayList<>(Arrays.asList(4, 2, 6, 11,5, 7, 3));
 
         System.out.println("\nDay1 Task1 :  ******");
         elemanSameLinePrintWithBraceStructured(sayi);
@@ -17,13 +16,37 @@ public class LambdaRunner {
         System.out.println("\nDay1 Task5 :  ******");
         byk34OrEvenPrint(sayi);
         System.out.println("\nDay2 Task1 :  ******");
-        System.out.println("\nDay1 Task2 :  ******");
+        evenSquarePrint(sayi);
+        System.out.println("\nDay2 Task2 :  ******");
+        oddKupBirFazlaPrint(sayi);
+        System.out.println("\nDay2 Task3 :  ******");
+        evenElementsSquarePrint(sayi);
+        System.out.println("\nDay2 Task4 :  ******");
+        System.out.println(findMax(sayi));
+        System.out.println("\nDay2 Task5 :  ******");
+        evenKareMax(sayi);
+        System.out.println("\nDay2 Task6 :  ******");
+        sumPrint(sayi);
+        System.out.println("\nDay2 Task7 :  ******");
+        evenMultplyPrint(sayi);
+        System.out.println("\nDay2 Task8 :  ******");
+        findMin(sayi);
+        System.out.println("\nDay2 Task9 :  ******");
+        byk5KckOdd(sayi);
+        System.out.println("\nDay2 Task10 :  ******");
+        evenKareFromKckToByk(sayi);
+        System.out.println("\nDay2 Task11 :  ******");
+        oddKareBykKck(sayi);
 
 
     }
 
     public static void printIntWithLambda(int number) { // utility method
         System.out.print(number + " ");
+    }
+
+    public static boolean findEvenElements(int number) {
+        return number%2==0 ;
     }
 
     //Day-1
@@ -37,19 +60,30 @@ public class LambdaRunner {
 
     //Task : "functional Programming" kullanarak list elemanlarını aynı satirda aralarında bosluk olacak sekilde print ediniz.
     public static void elemanSameLinePrintWithBraceFunctional(List<Integer> sayi) {
-        sayi.stream().forEach(t -> System.out.print(t + " "));
+        sayi.
+                stream().
+                forEach(t -> System.out.print(t + " "));
     }
     //Task : functional Programming ile list elemanlarinin  cift olanalrini ayni satirda aralarina bosluk birakarak print ediniz.
     public static void printEven (List<Integer> sayi){
-        sayi.stream().filter(t->t%2==0).forEach(LambdaRunner::printIntWithLambda);
+        sayi.
+                stream().
+                filter(t->t%2==0).
+                forEach(LambdaRunner::printIntWithLambda);
     }
     //Task :functional Programming ile list elemanlarinin 34 den kucuk cift olanalrini ayni satirda aralarina bosluk birakarak print ediniz.
     public static void kck34CiftPrint(List<Integer> sayi){
-        sayi.stream().filter(t->(t<34) && (t%2==0) ).forEach(LambdaRunner::printIntWithLambda);
+        sayi.
+                stream().
+                filter(t->(t<34) && (t%2==0) ).
+                forEach(LambdaRunner::printIntWithLambda);
     }
     //Task : functional Programming ile list elemanlarinin 34 den buyk veya cift olanalrini ayni satirda aralarina bosluk birakarak print ediniz.
     public static void byk34OrEvenPrint(List<Integer> sayi) {
-        sayi.stream().filter(t-> (t>34) || (t%2==0)).forEach(LambdaRunner::printIntWithLambda);
+        sayi.
+                stream().
+                filter(t-> (t>34) || (t%2==0)).
+                forEach(LambdaRunner::printIntWithLambda);
     }
 
     //Day-2
@@ -57,16 +91,78 @@ public class LambdaRunner {
     //   List<Integer> sayi = new ArrayList<>(Arrays.asList(34, 22, 16, 11, 35, 20, 63, 21, 65, 44, 66, 64, 81, 38, 15));
 
     // Task : Functional Programming ile listin cift elemanlarinin  karelerini ayni satirda aralarina bosluk bırakarak print ediniz
+    public static void evenSquarePrint(List<Integer> sayi) {
+        sayi.
+                stream().
+                filter(LambdaRunner::findEvenElements).
+                map(t->t*t).
+                forEach(LambdaRunner::printIntWithLambda);
+        //
+    }
     // Task : Functional Programming ile listin tek elemanlarinin  kuplerinin bir fazlasini ayni satirda aralarina bosluk birakarak print edi
+    public static void oddKupBirFazlaPrint(List<Integer> sayi){
+        sayi.
+                stream().
+                filter(t->(t%2)==1).
+                map(t->(t*t*t)+1).
+                forEach(LambdaRunner::printIntWithLambda);
+    }
     // Task : Functional Programming ile listin cift elemanlarinin   karekoklerini ayni satirda aralarina bosluk birakarak yazdiriniz
+    public static void evenElementsSquarePrint(List<Integer> sayi){
+        sayi.
+                stream().
+                filter(LambdaRunner::findEvenElements).
+                map(Math::sqrt).
+                forEach(t-> System.out.println(t + " "));
+    }
     // Task : list'in en buyuk elemanini yazdiriniz
+    public static Optional<Integer> findMax(List<Integer> sayi){
+        return sayi.
+                stream().
+                reduce(Math::max);
+    }
     // Task : List'in cift elemanlarin karelerinin en buyugunu print ediniz
+    public static Optional<Integer> evenKareMax(List<Integer> sayi){
+       return sayi.
+               stream().
+               filter(LambdaRunner::findEvenElements).
+               map(t->t*t).
+               reduce(Math::max);
+    }
     // Task : List'teki tum elemanlarin toplamini yazdiriniz.
+    public static void sumPrint(List<Integer> sayi){
+        System.out.println(sayi.
+                stream().
+                reduce(0, Integer::sum));
+    }
     // Task : List'teki cift elemanlarin carpimini  yazdiriniz.
+    public static void evenMultplyPrint(List<Integer> sayi){
+        System.out.println(sayi.
+                stream().
+                filter(LambdaRunner::findEvenElements).
+                reduce(1, (a, b) -> (a * b)));
+    }
     // Task : List'teki elemanlardan en kucugunu 4 farklı yontem ile print ediniz.
+    public static void findMin(List<Integer> sayi){
+        System.out.println(sayi.
+                stream().
+                reduce(Integer::min));
+    }
     // Task : List'teki 5'ten buyuk en kucuk tek sayiyi print ediniz.
+    public static void byk5KckOdd(List<Integer> sayi){
+        System.out.println(sayi.stream().filter(t -> (t > 5) && (t % 2 == 1)).reduce(Integer::min));
+    }
     // Task : list'in cift  elemanlarinin karelerini  kucukten buyuge print ediniz.
+    public static void evenKareFromKckToByk(List<Integer> sayi){
+        System.out.println(sayi.stream().filter(t -> t % 2 == 0).map(t -> t * t).sorted().toList());
+    }
     // Task : list'in tek  elemanlarinin kareleri ni buykten kucuge  print ediniz.
+    public static void oddKareBykKck(List<Integer> sayi){
+        System.out.println("son" + sayi.
+                stream().
+                filter(t -> t % 2 == 1).
+                map(t -> t * t).sorted(Comparator.reverseOrder()).toList());
+    }
 
     //Day-3
 
