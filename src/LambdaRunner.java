@@ -37,6 +37,8 @@ public class LambdaRunner {
         evenKareFromKckToByk(sayi);
         System.out.println("\nDay2 Task11 :  ******");
         oddKareBykKck(sayi);
+        System.out.println("\nDay3 Task1 :  ******");
+        alphabeticUppercaseDistincPrint(menu);
 
 
     }
@@ -167,11 +169,19 @@ public class LambdaRunner {
     //Day-3
 
 
-    // List<String> menü = new ArrayList<>(Arrays.asList("küşleme", "adana", "trileçe", "havucDilim", "buryan",
-    //      "yaglama", "kokareç", "arabAşı", "güveç", "waffle", "welemen", "cacix"));
+    static List<String> menu = new ArrayList<>(Arrays.asList("küşleme", "adana", "trileçe", "havucDilim", "buryan",
+          "yaglama", "kokareç", "arabAşı", "güveç", "waffle", "welemen", "cacix"));
 
 
     // Task : List elemanlarini alafabetik buyuk harf ve  tekrarsiz print ediniz.
+    public static void alphabeticUppercaseDistincPrint(List<String> menu) {
+        menu.
+                stream().
+                map(String::toUpperCase).
+                distinct().
+                sorted().
+                forEach(t-> System.out.print(t + " "));
+    }
     // Task : list elelmanlarinin character sayisini ters sirali olarak tekrarsiz print ediniz..
     // Task : List elemanlarini character sayisina gore kckten byk e gore print ediniz..
     // Task : list elemanlarinin son harfine gore ters sirali print ediniz.
