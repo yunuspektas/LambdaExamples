@@ -180,7 +180,7 @@ public class LambdaRunner {
                 map(String::toUpperCase).
                 distinct().
                 sorted().
-                forEach(t-> System.out.print(t + " "));
+                forEach(t-> System.out.print(t + " ")) ;
     }
     // Task : list elelmanlarinin character sayisini ters sirali olarak tekrarsiz print ediniz..
     // Task : List elemanlarini character sayisina gore kckten byk e gore print ediniz..
