@@ -46,9 +46,17 @@ public class LambdaRunner {
         System.out.println("\nDay3 Task4 :  ******");
         lastCharacterReversedOrder(menu);
         System.out.println("\nDay3 Task5 :  ******");
+
         System.out.println("\nDay3 Task6 :  ******");
+        characterIsBigger7(menu);
         System.out.println("\nDay3 Task7 :  ******");
+        startsW(menu);
         System.out.println("\nDay3 Task8 :  ******");
+        endWithX(menu);
+        System.out.println("\nDay3 Task9 :  ******");
+        bigElement(menu);
+        System.out.println("\nDay3 Task10 :  ******");
+        lastCharacterExamptFirst(menu);
 
 
     }
@@ -220,10 +228,39 @@ public class LambdaRunner {
     }
     // Task : listin elemanlarin karakterlerinin cift sayili  karelerini hesaplayan,ve karelerini tekrarsiz buyukten kucuge sirali  print ediniz...
     // Task : List elelmmalarinin karakter sayisini 7 ve 7 'den az olma durumunu kontrol ediniz.
+    public static void characterIsBigger7(List<String> menu){
+        System.out.println(menu.
+                stream().
+                allMatch(t -> t.length() <= 7) ?
+                "list elemanları 7 ve daha az harften olusuyor" :
+                "list elemanları 7 harften  buyuk");
+    }
     // Task : List elelmanlarinin "W" ile baslamasını kontrol ediniz.
+    public static void startsW(List<String> menu){
+        menu.stream().allMatch(t->t.startsWith("w"));
+    }
     // Task : List elelmanlarinin "x" ile biten en az bir elemanı kontrol ediniz.
+    public static void endWithX(List<String> menu) {
+        menu.stream().anyMatch(t->t.endsWith("x"));
+    }
     // Task : Karakter sayisi en buyuk elemani yazdiriniz.
+    public static void bigElement(List<String> menu){
+        menu.
+                stream().
+                sorted(Comparator.
+                        comparing(t->t.toString().length()).
+                        reversed()).
+                limit(1).
+                forEach(t-> System.out.println(t));
+    }
     // Task : list elemanlarini son harfine göre siralayıp ilk eleman hariç kalan elemanlari print ediniz.
+    public static void lastCharacterExamptFirst(List<String> menu){
+        menu.
+                stream().
+                sorted(Comparator.comparing(t-> t.charAt(t.length()-1))).
+                skip(1).
+                forEach(t-> System.out.println(t+ " "));
+    }
 
     //Day-4
 
