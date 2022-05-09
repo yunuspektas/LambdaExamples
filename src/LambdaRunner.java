@@ -39,6 +39,16 @@ public class LambdaRunner {
         oddKareBykKck(sayi);
         System.out.println("\nDay3 Task1 :  ******");
         alphabeticUppercaseDistincPrint(menu);
+        System.out.println("\nDay3 Task2 :  ******");
+        characterNumberBykKckDistinct(menu);
+        System.out.println("\nDay3 Task3 :  ******");
+        characteNumberKckBykPrint(menu);
+        System.out.println("\nDay3 Task4 :  ******");
+        lastCharacterReversedOrder(menu);
+        System.out.println("\nDay3 Task5 :  ******");
+        System.out.println("\nDay3 Task6 :  ******");
+        System.out.println("\nDay3 Task7 :  ******");
+        System.out.println("\nDay3 Task8 :  ******");
 
 
     }
@@ -183,8 +193,31 @@ public class LambdaRunner {
                 forEach(t-> System.out.print(t + " ")) ;
     }
     // Task : list elelmanlarinin character sayisini ters sirali olarak tekrarsiz print ediniz..
+    public static void characterNumberBykKckDistinct(List<String> menu){
+        menu.
+                stream().
+                map(String::length).
+                sorted(Comparator.reverseOrder()).
+                distinct().
+                forEach(t-> System.out.print(t + " "));
+    }
     // Task : List elemanlarini character sayisina gore kckten byk e gore print ediniz..
+    public static void characteNumberKckBykPrint(List<String> menu){
+        menu.
+                stream().
+                sorted(Comparator.comparing(String::length)).
+                forEach(t-> System.out.print(t + " "));
+    }
     // Task : list elemanlarinin son harfine gore ters sirali print ediniz.
+    public static void lastCharacterReversedOrder(List<String> menu) {
+        menu.
+                stream().
+                sorted(Comparator.
+                        comparing(t->t.toString().
+                                charAt(t.toString().length()-1)).
+                                reversed()).
+                forEach(t-> System.out.println(t + " "));
+    }
     // Task : listin elemanlarin karakterlerinin cift sayili  karelerini hesaplayan,ve karelerini tekrarsiz buyukten kucuge sirali  print ediniz...
     // Task : List elelmmalarinin karakter sayisini 7 ve 7 'den az olma durumunu kontrol ediniz.
     // Task : List elelmanlarinin "W" ile baslamasını kontrol ediniz.
