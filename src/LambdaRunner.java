@@ -283,7 +283,14 @@ public class LambdaRunner {
         List<Universite> unv = new ArrayList<>(Arrays.asList(u01, u02, u03, u04, u05));
 
      */
+    /*Universite u01 = new Universite("bogazici", "matematik", 571, 93);
+    Universite u02 = new Universite("istanbul teknik", "matematik", 622, 81);
+    Universite u03 = new Universite("istanbul", "hukuk", 1453, 71);
+    Universite u04 = new Universite("marmara", "bilgisayar muh", 1071, 77);
+    Universite u05 = new Universite("yıldız teknik", "gemi", 333, 74);
+    List<Universite> unv = new ArrayList<>(Arrays.asList(u01, u02, u03, u04, u05));
 
+     */
     //task 01--> notOrt'larinin 74' den buyuk oldg kontrol eden pr create ediniz.
     //task 02-->ogrc sayilarinin   110 den az olmadigini  kontrol eden pr create ediniz.
     //task 03-->universite'lerde herhangi birinde "matematik" olup olmadigini  kontrol eden pr create ediniz.
