@@ -5,12 +5,6 @@ public class LambdaRunner {
         //List<Integer> sayi = new ArrayList<>(Arrays.asList(34, 22, 16, 11, 35, 20, 63, 21, 65, 44, 66, 64, 81, 38, 15));
         List<Integer> sayi = new ArrayList<>(Arrays.asList(4, 2, 6, 11,5, 7, 3));
 
-        Universite u01 = new Universite("bogazici", "matematik", 571, 93);
-        Universite u02 = new Universite("istanbul teknik", "matematik", 622, 81);
-        Universite u03 = new Universite("istanbul", "hukuk", 1453, 71);
-        Universite u04 = new Universite("marmara", "bilgisayar muh", 1071, 77);
-        Universite u05 = new Universite("yıldız teknik", "gemi", 333, 74);
-        List<Universite> unv = new ArrayList<>(Arrays.asList(u01, u02, u03, u04, u05));
 
         System.out.println("\nDay1 Task1 :  ******");
         elemanSameLinePrintWithBraceStructured(sayi);
@@ -66,7 +60,18 @@ public class LambdaRunner {
         lastCharacterExamptFirst(menu);
         System.out.println("\nDay4 Task1 :  ******");
         System.out.println(fingBg74NotORT(unv));
-
+        System.out.println("\nDay4 Task2 :  ******");
+        System.out.println(ogrncSayiByk110(unv));
+        System.out.println("\nDay4 Task3 :  ******");
+        System.out.println(metametikVarMı(unv));
+        System.out.println("\nDay4 Task4 :  ******");
+        System.out.println("\nDay4 Task5 :  ******");
+        System.out.println("\nDay4 Task6 :  ******");
+        System.out.println("\nDay4 Task7 :  ******");
+        System.out.println("\nDay4 Task8 :  ******");
+        System.out.println("\nDay4 Task9 :  ******");
+        System.out.println("\nDay4 Task10:  ******");
+        System.out.println("\nDay4 Task11:  ******");
 
     }
 
@@ -78,7 +83,7 @@ public class LambdaRunner {
         return number%2==0 ;
     }
 
-    //Day-1
+    //   Day-1
 
     //Task : "Structured Programming" kullanarak list elemanlarını aynı satirda aralarında bosluk olacak sekilde print ediniz.
     public static void elemanSameLinePrintWithBraceStructured(List<Integer> sayi) {
@@ -115,7 +120,7 @@ public class LambdaRunner {
                 forEach(LambdaRunner::printIntWithLambda);
     }
 
-    //Day-2
+    //   Day-2
 
     //   List<Integer> sayi = new ArrayList<>(Arrays.asList(34, 22, 16, 11, 35, 20, 63, 21, 65, 44, 66, 64, 81, 38, 15));
 
@@ -193,7 +198,7 @@ public class LambdaRunner {
                 map(t -> t * t).sorted(Comparator.reverseOrder()).toList());
     }
 
-    //Day-3
+    //  Day-3
 
 
     static List<String> menu = new ArrayList<>(Arrays.asList("küşleme", "adana", "trileçe", "havucDilim", "buryan",
@@ -271,7 +276,7 @@ public class LambdaRunner {
                 forEach(t-> System.out.print(t+ " "));
     }
 
-    //Day-4
+    //  Day-4
 
 
     /*
@@ -281,26 +286,28 @@ public class LambdaRunner {
                ogrcSayisi (int)
                notOrt (int)
                olan POJO clas craete edip main method içinde 5 farklı obj'den List create ediniz.
-
-
-
-        Universite u01 = new Universite("bogazici", "matematik", 571, 93);
-        Universite u02 = new Universite("istanbul teknik", "matematik", 622, 81);
-        Universite u03 = new Universite("istanbul", "hukuk", 1453, 71);
-        Universite u04 = new Universite("marmara", "bilgisayar muh", 1071, 77);
-        Universite u05 = new Universite("yıldız teknik", "gemi", 333, 74);
-        List<Universite> unv = new ArrayList<>(Arrays.asList(u01, u02, u03, u04, u05));
-
      */
-
-
+   static Universite u01 = new Universite("bogazici", "matematik", 571, 93);
+   static Universite u02 = new Universite("istanbul teknik", "matematik", 622, 81);
+   static Universite u03 = new Universite("istanbul", "hukuk", 1453, 71);
+   static Universite u04 = new Universite("marmara", "bilgisayar muh", 1071, 77);
+   static Universite u05 = new Universite("yıldız teknik", "gemi", 333, 74);
+   static List<Universite> unv = new ArrayList<>(Arrays.asList(u01, u02, u03, u04, u05));
 
     //task 01--> notOrt'larinin 74' den buyuk oldg kontrol eden pr create ediniz.
     public static boolean fingBg74NotORT(List<Universite> unv){
         return unv.stream().allMatch(t->t.getNotOrt()>74);
     }
     //task 02-->ogrc sayilarinin   110 den az olmadigini  kontrol eden pr create ediniz.
+    public static boolean ogrncSayiByk110(List<Universite> unv){
+        return unv.stream().allMatch(t->t.getOgrcSayisi()>110);
+    }
     //task 03-->universite'lerde herhangi birinde "matematik" olup olmadigini  kontrol eden pr create ediniz.
+    public static boolean metametikVarMı(List<Universite> unv){
+        return unv.stream().anyMatch(t->t.getBolum().toLowerCase()=="matematik");
+
+    }
+
     //task 04-->universite'leri ogr sayilarina gore b->k siralayiniz.
     //task 05-->universite'leri notOrt gore  b->k siralayip ilk 3 'unu print ediniz.
     //task 06--> ogrc sayisi en az olan 2. universite'yi  print ediniz.
