@@ -65,6 +65,7 @@ public class LambdaRunner {
         System.out.println("\nDay4 Task3 :  ******");
         System.out.println(metametikVarMı(unv));
         System.out.println("\nDay4 Task4 :  ******");
+        sortUnvByNumberOfStudent(unv);
         System.out.println("\nDay4 Task5 :  ******");
         System.out.println("\nDay4 Task6 :  ******");
         System.out.println("\nDay4 Task7 :  ******");
@@ -307,8 +308,12 @@ public class LambdaRunner {
         return unv.stream().anyMatch(t->t.getBolum().toLowerCase()=="matematik");
 
     }
-
     //task 04-->universite'leri ogr sayilarina gore b->k siralayiniz.
+    public static void sortUnvByNumberOfStudent(List<Universite> unv){
+        unv.stream().
+                sorted(Comparator.comparing(Universite::getOgrcSayisi).reversed()).
+                forEach(t-> System.out.print(t.getUniversite()+ " "));
+    }
     //task 05-->universite'leri notOrt gore  b->k siralayip ilk 3 'unu print ediniz.
     //task 06--> ogrc sayisi en az olan 2. universite'yi  print ediniz.
     //task 07--> notOrt 63 'den buyuk olan universite'lerin ogrc sayilarini toplamini print ediniz.
