@@ -5,6 +5,13 @@ public class LambdaRunner {
         //List<Integer> sayi = new ArrayList<>(Arrays.asList(34, 22, 16, 11, 35, 20, 63, 21, 65, 44, 66, 64, 81, 38, 15));
         List<Integer> sayi = new ArrayList<>(Arrays.asList(4, 2, 6, 11,5, 7, 3));
 
+        Universite u01 = new Universite("bogazici", "matematik", 571, 93);
+        Universite u02 = new Universite("istanbul teknik", "matematik", 622, 81);
+        Universite u03 = new Universite("istanbul", "hukuk", 1453, 71);
+        Universite u04 = new Universite("marmara", "bilgisayar muh", 1071, 77);
+        Universite u05 = new Universite("yıldız teknik", "gemi", 333, 74);
+        List<Universite> unv = new ArrayList<>(Arrays.asList(u01, u02, u03, u04, u05));
+
         System.out.println("\nDay1 Task1 :  ******");
         elemanSameLinePrintWithBraceStructured(sayi);
         System.out.println("\nDay1 Task2 :  ******");
@@ -57,6 +64,8 @@ public class LambdaRunner {
         bigElement(menu);
         System.out.println("\nDay3 Task10 :  ******");
         lastCharacterExamptFirst(menu);
+        System.out.println("\nDay4 Task1 :  ******");
+        System.out.println(fingBg74NotORT(unv));
 
 
     }
@@ -259,7 +268,7 @@ public class LambdaRunner {
                 stream().
                 sorted(Comparator.comparing(t-> t.charAt(t.length()-1))).
                 skip(1).
-                forEach(t-> System.out.println(t+ " "));
+                forEach(t-> System.out.print(t+ " "));
     }
 
     //Day-4
@@ -283,17 +292,12 @@ public class LambdaRunner {
         List<Universite> unv = new ArrayList<>(Arrays.asList(u01, u02, u03, u04, u05));
 
      */
-    Universite u01 = new Universite("bogazici", "matematik", 571, 93);
-    Universite u02 = new Universite("istanbul teknik", "matematik", 622, 81);
-    Universite u03 = new Universite("istanbul", "hukuk", 1453, 71);
-    Universite u04 = new Universite("marmara", "bilgisayar muh", 1071, 77);
-    Universite u05 = new Universite("yıldız teknik", "gemi", 333, 74);
-    List<Universite> unv = new ArrayList<>(Arrays.asList(u01, u02, u03, u04, u05));
+
 
 
     //task 01--> notOrt'larinin 74' den buyuk oldg kontrol eden pr create ediniz.
-    public static void fingBg74NotORT(List<Universite> unv){
-        //unv.stream().
+    public static boolean fingBg74NotORT(List<Universite> unv){
+        return unv.stream().allMatch(t->t.getNotOrt()>74);
     }
     //task 02-->ogrc sayilarinin   110 den az olmadigini  kontrol eden pr create ediniz.
     //task 03-->universite'lerde herhangi birinde "matematik" olup olmadigini  kontrol eden pr create ediniz.
