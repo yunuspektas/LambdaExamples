@@ -411,5 +411,44 @@ public class LambdaRunner {
     //TASK 08 --> Istenilen bir sayinin  x. kuvvetini ekrana yazdiran programi  create ediniz.
 
 
+    //Day-6
+
+    //TASK 01 --> haluk.txt dosyasini okuyunuz.(Console'a print ediniz.)
+
+    //TASK 02 --> haluk.txt dosyasini buyuk harflerle okuyunuz.(Console'a buyuk harflerle print ediniz.)
+
+    //TASK 03 --> haluk.txt dosyasindaki ilk satiri kucuk harflerle print ediniz..
+
+    //TASK 04 --> haluk.txt dosyasinda "basari" kelimesinin kac satirda gectiginiz print ediniz.
+
+    //TASK 05 --> haluk.txt dosyasindaki farkli kelimeleri  print ediniz..
+
+/*
+   Stream.flatMap, adıyla tahmin edilebileceği gibi, bir map ve flat işleminin birleşimidir. Bu, ilk önce elemanlarınıza bir
+   fonksiyon uyguladığınız ve daha sonra düzleştirdiğiniz anlamına gelir.
+   Stream.map yalnızca akışı düzleştirmeden bir işlevi uygular.
+   Bir akışın düzleştirme'in neyi içerdiğini anlamak için, "iki seviye" olan [ [1,2,3],[4,5,6],[7,8,9] ] gibi bir yapı düşünün.
+   Bunun düzleştirilmesi, "bir seviye" yapısında dönüştürülmesi anlamına gelir: [ 1,2,3,4,5,6,7,8,9 ].
+   flatMap yöntemi, bir akışın her bir değerini başka bir akışla değiştirmenizi sağlar
+   ve ardından oluşturulan tüm akışları tek bir akışa birleştirir.
+ */
+
+
+    //TASK 06 --> haluk.txt dosyasindaki tum kelimeleri natural order  print ediniz..
+
+
+    //TASK 07 --> haluk.txt dosyasinda "basari" kelimesinin kac kere gectigini buyuk harf kucuk harf bagımsız print ediniz.
+
+    //TASK 08 --> haluk.txt dosyasinda "a" harfi gecen kelimelerin sayisini print eden  programi create ediniz.
+
+    //TASK 09 --> haluk.txt dosyasinda icinde "a" harfi gecen kelimeleri print ediniz.
+
+
+    //TASK 10 --> haluk.txt dosyasinda kac /farklı harf kullanildigini print ediniz.
+
+
+    //TASK 11 --> haluk.txt dosyasinda kac farkli kelime kullanildigini print ediniz.
+
+    //TASK 12 --> haluk.txt dosyasinda  farkli kelimeleri print ediniz
 }
 
