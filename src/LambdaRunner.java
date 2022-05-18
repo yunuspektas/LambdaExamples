@@ -1,10 +1,9 @@
 import java.util.*;
+import java.util.stream.IntStream;
 
 public class LambdaRunner {
     public static void main(String[] args) {
-        //List<Integer> sayi = new ArrayList<>(Arrays.asList(34, 22, 16, 11, 35, 20, 63, 21, 65, 44, 66, 64, 81, 38, 15));
         List<Integer> sayi = new ArrayList<>(Arrays.asList(4, 2, 6, 11, 5, 7, 3));
-
 
         System.out.println("\nDay1 Task1 :  ******");
         elemanSameLinePrintWithBraceStructured(sayi);
@@ -80,6 +79,20 @@ public class LambdaRunner {
         System.out.println("findAverageNote(unv) = " + findAverageNote(unv));
         System.out.println("\nDay4 Task11:  ******");
         findMinNot(unv);
+        System.out.println("\nDay5 Task1 :  ******");
+        System.out.println("structuredSumNumbers(5) = " + structuredSumNumbers(5));
+        System.out.println("functionalSumNumbers(5) = " + functionalSumNumbers(5));
+        System.out.println("\nDay5 Task2 :  ******");
+        System.out.println("sumEvenNumbers(5) = " + sumEvenNumbers(5));
+        System.out.println("\nDay5 Task3 :  ******");
+        sumFirstPositive(3);
+        System.out.println("\nDay5 Task4 :  ******");
+        System.out.println("sumFirstOddNumbers(3) = " + sumFirstOddNumbers(3));
+        System.out.println("\nDay5 Task5 :  ******");
+        System.out.println("\nDay5 Task6 :  ******");
+        System.out.println("\nDay5 Task7 :  ******");
+        System.out.println("findFacto(4) = " + findFacto(4));
+        System.out.println("\nDay5 Task8 :  ******");
 
     }
 
@@ -363,36 +376,41 @@ public class LambdaRunner {
                 forEach(t -> System.out.println(t.getUniversite()));
 
     }
+
     //task 07--> notOrt 63 'den buyuk olan universite'lerin ogrc sayilarini toplamini print ediniz.
-    public static void getSumNumberOfStudentBigger63(List<Universite> unv){
+    public static void getSumNumberOfStudentBigger63(List<Universite> unv) {
         System.out.println(unv.stream().
                 filter(t -> t.getOgrcSayisi() > 63).
                 map(t -> t.getOgrcSayisi()).
                 reduce(0, (t, u) -> t + u));
     }
+
     //task 08--> Ogrenci sayisi 333'dan buyuk olan universite'lerin notOrt'larinin ortalamasini bulunuz.
-    public static void findAverageOf333(List<Universite> unv){
+    public static void findAverageOf333(List<Universite> unv) {
         System.out.println(unv.stream().
                 filter(t -> t.getOgrcSayisi() > 333).
                 mapToDouble(t -> t.getNotOrt()).
                 average());
     }
+
     //task 09-->"matematik" bolumlerinin sayisini  print ediniz.
-    public static long printMath(List<Universite> unv){
+    public static long printMath(List<Universite> unv) {
         return unv.stream().
-                filter(t->t.getBolum().contains("mat")).
+                filter(t -> t.getBolum().contains("mat")).
                 count();
     }
+
     //task 10-->Ogrenci sayilari 571'dan fazla olan universite'lerin en buyuk notOrt'unu bulunuz.
-    public static Optional<Integer> findAverageNote(List<Universite> unv){
-       return unv.stream().
-                filter(t->t.getOgrcSayisi()>571).
-                map(t->t.getNotOrt()).
+    public static Optional<Integer> findAverageNote(List<Universite> unv) {
+        return unv.stream().
+                filter(t -> t.getOgrcSayisi() > 571).
+                map(t -> t.getNotOrt()).
                 reduce(Math::max);
 
     }
+
     //task 11-->Ogrenci sayilari 1071'dan az olan universite'lerin en kucuk notOrt'unu bulunuz.
-    public static void findMinNot(List<Universite> unv){
+    public static void findMinNot(List<Universite> unv) {
         System.out.println(unv.stream().
                 filter(t -> t.getOgrcSayisi() < 1071).
                 map(t -> t.getNotOrt()).
@@ -401,26 +419,56 @@ public class LambdaRunner {
 
     //Day-5
 
-    //TASK 01 --> Structured Programming ve Functional Programming ile 1'den x'e kadar tamsayilari toplayan bir program create ediniz.
+    //TASK 01 --> Structured Programming ve Functional Programming ile
+    // 1'den x'e kadar tamsayilari toplayan bir program create ediniz.
+    public static int structuredSumNumbers(int x) {
+        int sum = 0;
+        for (int i = 1; i <= x; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+
+    public static OptionalInt functionalSumNumbers(int x) {
+        return IntStream.range(1, x + 1).reduce(Math::addExact);
+    }
+
     //TASK 02 --> 1'den x'e kadar cift tamsayilari toplayan bir program create ediniz.
+    public static int sumEvenNumbers(int x) {
+        return IntStream.range(1, x+1).filter(t->t%2==0).sum();
+    }
     //TASK 03 --> Ilk x pozitif cift sayiyi toplayan program  create ediniz.
+    public static void sumFirstPositive(int x){
+        System.out.println(IntStream.range(2, (2 * x + 1)).filter(LambdaRunner::findEvenElements).sum());
+        // 2.yol :
+        IntStream.iterate(2, t->t+2).
+                limit(x).
+                sum();
+    }
     //TASK 04 --> Ilk X pozitif tek tamsayiyi toplayan programi  create ediniz.
+    public static int sumFirstOddNumbers(int x){
+       return IntStream.iterate(1, t->t+2).
+                limit(x).
+                sum();
+    }
     //TASK 05 --> 2'nin ilk x kuvvetini ekrana yazdiran programi  create ediniz.
     //TASK 06 --> Istenilen bir sayinin ilk x kuvvetini ekrana yazdiran programi  create ediniz.
     //TASK 07 --> Istenilen bir sayinin faktoriyelini hesaplayan programi  create ediniz.
+    public static int findFacto(int x){
+        return IntStream.range(2, x+1).reduce(1, (t,u)->t*u);
+    }
     //TASK 08 --> Istenilen bir sayinin  x. kuvvetini ekrana yazdiran programi  create ediniz.
+    public static void findKuvvet(int istenenSayi, int x){
+
+    }
 
 
     //Day-6
 
     //TASK 01 --> haluk.txt dosyasini okuyunuz.(Console'a print ediniz.)
-
     //TASK 02 --> haluk.txt dosyasini buyuk harflerle okuyunuz.(Console'a buyuk harflerle print ediniz.)
-
     //TASK 03 --> haluk.txt dosyasindaki ilk satiri kucuk harflerle print ediniz..
-
     //TASK 04 --> haluk.txt dosyasinda "basari" kelimesinin kac satirda gectiginiz print ediniz.
-
     //TASK 05 --> haluk.txt dosyasindaki farkli kelimeleri  print ediniz..
 
 /*
@@ -435,20 +483,11 @@ public class LambdaRunner {
 
 
     //TASK 06 --> haluk.txt dosyasindaki tum kelimeleri natural order  print ediniz..
-
-
     //TASK 07 --> haluk.txt dosyasinda "basari" kelimesinin kac kere gectigini buyuk harf kucuk harf bagımsız print ediniz.
-
     //TASK 08 --> haluk.txt dosyasinda "a" harfi gecen kelimelerin sayisini print eden  programi create ediniz.
-
     //TASK 09 --> haluk.txt dosyasinda icinde "a" harfi gecen kelimeleri print ediniz.
-
-
     //TASK 10 --> haluk.txt dosyasinda kac /farklı harf kullanildigini print ediniz.
-
-
     //TASK 11 --> haluk.txt dosyasinda kac farkli kelime kullanildigini print ediniz.
-
     //TASK 12 --> haluk.txt dosyasinda  farkli kelimeleri print ediniz
 }
 
