@@ -1,8 +1,13 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class LambdaRunner {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         List<Integer> sayi = new ArrayList<>(Arrays.asList(4, 2, 6, 11, 5, 7, 3));
 
         System.out.println("\nDay1 Task1 :  ******");
@@ -92,7 +97,23 @@ public class LambdaRunner {
         System.out.println("\nDay5 Task6 :  ******");
         System.out.println("\nDay5 Task7 :  ******");
         System.out.println("findFacto(4) = " + findFacto(4));
-        System.out.println("\nDay5 Task8 :  ******");
+        System.out.println("\nDay6 Task1 :  ******");
+        readTxt();
+        System.out.println("\nDay6 Task2 :  ******");
+        readUpperCaseTxt();
+        System.out.println("\nDay6 Task3 :  ******");
+        readFirstLine();
+        System.out.println("\nDay6 Task4 :  ******");
+        countBasari();
+        System.out.println("\nDay6 Task5 :  ******");
+        printDiffSentence();
+        System.out.println("\nDay6 Task6 :  ******");
+        System.out.println("\nDay6 Task7 :  ******");
+        System.out.println("\nDay6 Task8 :  ******");
+        System.out.println("\nDay6 Task9 :  ******");
+        System.out.println("\nDay6 Task10:  ******");
+        System.out.println("\nDay6 Task11:  ******");
+        System.out.println("\nDay6 Task12:  ******");
 
     }
 
@@ -116,7 +137,6 @@ public class LambdaRunner {
     //Task : "functional Programming" kullanarak list elemanlarını aynı satirda aralarında bosluk olacak sekilde print ediniz.
     public static void elemanSameLinePrintWithBraceFunctional(List<Integer> sayi) {
         sayi.
-                stream().
                 forEach(t -> System.out.print(t + " "));
     }
 
@@ -435,41 +455,78 @@ public class LambdaRunner {
 
     //TASK 02 --> 1'den x'e kadar cift tamsayilari toplayan bir program create ediniz.
     public static int sumEvenNumbers(int x) {
-        return IntStream.range(1, x+1).filter(t->t%2==0).sum();
+        return IntStream.range(1, x + 1).filter(t -> t % 2 == 0).sum();
     }
+
     //TASK 03 --> Ilk x pozitif cift sayiyi toplayan program  create ediniz.
-    public static void sumFirstPositive(int x){
+    public static void sumFirstPositive(int x) {
         System.out.println(IntStream.range(2, (2 * x + 1)).filter(LambdaRunner::findEvenElements).sum());
         // 2.yol :
-        IntStream.iterate(2, t->t+2).
+        IntStream.iterate(2, t -> t + 2).
                 limit(x).
                 sum();
     }
+
     //TASK 04 --> Ilk X pozitif tek tamsayiyi toplayan programi  create ediniz.
-    public static int sumFirstOddNumbers(int x){
-       return IntStream.iterate(1, t->t+2).
+    public static int sumFirstOddNumbers(int x) {
+        return IntStream.iterate(1, t -> t + 2).
                 limit(x).
                 sum();
     }
+
     //TASK 05 --> 2'nin ilk x kuvvetini ekrana yazdiran programi  create ediniz.
     //TASK 06 --> Istenilen bir sayinin ilk x kuvvetini ekrana yazdiran programi  create ediniz.
     //TASK 07 --> Istenilen bir sayinin faktoriyelini hesaplayan programi  create ediniz.
-    public static int findFacto(int x){
-        return IntStream.range(2, x+1).reduce(1, (t,u)->t*u);
+    public static int findFacto(int x) {
+        return IntStream.range(2, x + 1).reduce(1, (t, u) -> t * u);
     }
+
     //TASK 08 --> Istenilen bir sayinin  x. kuvvetini ekrana yazdiran programi  create ediniz.
-    public static void findKuvvet(int istenenSayi, int x){
+    public static void findKuvvet(int istenenSayi, int x) {
 
     }
 
 
     //Day-6
+    static Path haluk = Path.of("GithubProjects/LambdaExamples/src/haluk.txt");
+    static Stream<String> akis;
+
+    static {
+        try {
+            akis = Files.lines(haluk);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     //TASK 01 --> haluk.txt dosyasini okuyunuz.(Console'a print ediniz.)
+    public static void readTxt() throws IOException {
+
+        Files.lines(haluk).forEach(System.out::println);
+    }
+
     //TASK 02 --> haluk.txt dosyasini buyuk harflerle okuyunuz.(Console'a buyuk harflerle print ediniz.)
+    public static void readUpperCaseTxt() throws IOException {
+
+        Files.lines(haluk).map(String::toUpperCase).forEach(System.out::println);
+    }
+
     //TASK 03 --> haluk.txt dosyasindaki ilk satiri kucuk harflerle print ediniz..
+    public static void readFirstLine() {
+        akis.map(String::toLowerCase).limit(1).forEach(System.out::println);
+    }
     //TASK 04 --> haluk.txt dosyasinda "basari" kelimesinin kac satirda gectiginiz print ediniz.
+    public static void countBasari() throws IOException {
+        System.out.println(Files.lines(haluk).map(String::toLowerCase).filter(t -> t.contains("basari")).count());
+    }
     //TASK 05 --> haluk.txt dosyasindaki farkli kelimeleri  print ediniz..
+    public static void printDiffSentence() throws IOException {
+        System.out.println(Files.lines(haluk).
+                map(t -> t.split(" ")).
+                flatMap(Arrays::stream).
+                distinct().
+                collect(Collectors.toList()));
+    }
 
 /*
    Stream.flatMap, adıyla tahmin edilebileceği gibi, bir map ve flat işleminin birleşimidir. Bu, ilk önce elemanlarınıza bir
